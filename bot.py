@@ -17,8 +17,11 @@ PORT = int(os.environ.get('PORT', '8443'))
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     # how do we pass class instance here
+    print('start works')
     datastorage = FirstTry()
+    print('start class works')
     datastorage.add_counter()
+    print('start class counter works')
     """Send a message when the command /start is issued."""
     update.message.reply_text(f'Hi! number:{datastorage.counter}')
 
