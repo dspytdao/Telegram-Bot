@@ -38,7 +38,7 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     TOKEN = os.environ.get("API_KEY")
-    APP_NAME='https://niftyinks.herokuapp.com/'
+    APP_NAME='https://nft-link-telegram-bot.herokuapp.com/'
     
     updater = Updater(TOKEN, use_context=True)
 
