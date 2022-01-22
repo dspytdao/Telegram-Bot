@@ -1,6 +1,6 @@
 class FirstTry:
 
-    def __init__(self, id):
+    def __init__(self, id=""):
         self.counter = 0
         #self.id = id
         #self.tricks = []
