@@ -12,13 +12,14 @@ logger = logging.getLogger(__name__)
 
 PORT = int(os.environ.get('PORT', '8443'))
 
+datastorage = FirstTry()
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     # how do we pass class instance here
     print('start works')
-    datastorage = FirstTry()
+    #datastorage = FirstTry()
     print('start class works')
     datastorage.add_counter()
     print('start class counter works')
@@ -48,7 +49,7 @@ def main():
     # Post version 12 this will no longer be necessary
     TOKEN = os.environ.get("API_KEY")
     APP_NAME='https://nft-link-telegram-bot.herokuapp.com/'
-    
+  
     updater = Updater(TOKEN, use_context=True)
     
     # Get the dispatcher to register handlers
