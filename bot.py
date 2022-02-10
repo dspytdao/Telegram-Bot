@@ -42,7 +42,7 @@ def start(update, context):
     #datastorage.add_counter()
 
     """Send a message when the command /start is issued."""
-    update.message.reply_text(f'Hi! Here is how the bot works.')
+    update.message.reply_text(f'Hi! Enter the id for the marketplace to get the latest signal')
     #update.message.reply_text(f'Hi! number:{datastorage.counter}')
 
 
@@ -56,24 +56,24 @@ def echo(update, context):
     #https://core.telegram.org/bots/api#sendanimation
     #https://stackoverflow.com/questions/35294948/telegram-python-chatbot-replying-with-an-animated-gif
     """Echo the user message."""
-    print(update.message.text)
+    #print(update.message.text)
     error, data = p3cw.request(
-    entity='marketplace', 
-    action='signals',
-    action_id = '184'
+        entity='marketplace', 
+        action='signals',
+        action_id = update.message.text
     )
-    print(data)
+    #print(data)
     if data[0]['signal_type'] == 'long':
-            context.bot.sendAnimation(chat_id=update.message.chat_id,
-            animation = long_array[0],
-             ## that's just data from local gif file
-            caption='Long Signal!',
+            context.bot.sendAnimation(
+                chat_id=update.message.chat_id,
+                animation = long_array[0],
+                caption='Long Signal!',
             )
     else:
-            context.bot.sendAnimation(chat_id=update.message.chat_id,
-            animation = short_array[0],
-             ## that's just data from local gif file
-            caption='Short Signal!',
+            context.bot.sendAnimation(
+                chat_id=update.message.chat_id,
+                animation = short_array[0],
+                caption='Short Signal!',
             )
     pair = data[0]['pair']
     exchange = data[0]['exchange']
