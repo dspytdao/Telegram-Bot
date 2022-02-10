@@ -28,7 +28,7 @@ p3cw = Py3CW(
     }
 )
 
-long_array = ['https://c.tenor.com/SY_Rb9FZFb4AAAAS/cat-jam-stonks.gif', "https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ]
+long_array = ['https://c.tenor.com/SY_Rb9FZFb4AAAAS/cat-jam-stonks.gif', "https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", "https://i.kym-cdn.com/photos/images/original/001/956/488/119.gif", "https://www.yankodesign.com/images/design_news/2021/02/auto-draft/youtooz_stonks_stinks_collectible_figure_2.gif"]
 
 short_array = ["https://c.tenor.com/lhey0DPlkiQAAAAM/rage-red-stocks.gif" ]
 
@@ -37,7 +37,7 @@ def start(update, context):
     # how do we pass class instance here
     context.bot.sendAnimation(chat_id=update.message.chat_id,
         animation = 'https://c.tenor.com/8IIQDBECgssAAAAM/hello-sexy-hi.gif',
-        caption='Long Signal!',
+        caption='Hello!',
         )
     #datastorage.add_counter()
 
@@ -49,7 +49,7 @@ def start(update, context):
 def help(update, context):
     """Send a message when the command /help is issued."""
     
-    update.message.reply_text('Help! Help! Help! Help!')
+    #update.message.reply_text('Help! Help! Help! Help!')
 
 
 def echo(update, context):
@@ -67,15 +67,15 @@ def echo(update, context):
     #print(data)
     if data[0]['signal_type'] == 'long':
         context.bot.sendAnimation(
-            chat_id=update.message.chat_id,
-            animation = long_array[random.randrange(2)-1],
-            caption='Long Signal!',
+            chat_id = update.message.chat_id,
+            animation = long_array[random.randrange(4)-1],
+            caption = 'Long Signal!',
         )
     else:
         context.bot.sendAnimation(
-            chat_id=update.message.chat_id,
+            chat_id = update.message.chat_id,
             animation = short_array[0],
-            caption='Short Signal!',
+            caption = 'Short Signal!',
         )
     pair = data[0]['pair']
     exchange = data[0]['exchange']
