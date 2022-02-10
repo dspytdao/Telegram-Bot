@@ -57,7 +57,7 @@ def echo(update, context):
     action_id = '184'
     )
     print(data)
-    if data[-1]['signal'] == 'long':
+    if data[-1]['signal_type'] == 'long':
             context.bot.sendAnimation(chat_id=update.message.chat_id,
             animation="http://techslides.com/demos/sample-videos/small.mp4", ## that's just data from local gif file
             caption='That is your gif!',
