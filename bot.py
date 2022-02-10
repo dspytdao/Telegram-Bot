@@ -18,22 +18,25 @@ datastorage = FirstTry()
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     # how do we pass class instance here
-    print('start works')
-    #datastorage = FirstTry()
-    print('start class works')
+
     datastorage.add_counter()
-    print('start class counter works')
+
     """Send a message when the command /start is issued."""
     update.message.reply_text(f'Hi! number:{datastorage.counter}')
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
+    
     update.message.reply_text('Help! Help! Help! Help!')
 
 
 def echo(update, context):
     """Echo the user message."""
+    context.bot.sendAnimation(chat_id=update.message.chat_id,
+            animation="http://techslides.com/demos/sample-videos/small.mp4", ## that's just data from local gif file
+            caption='That is your gif!',
+            )
     update.message.reply_text(update.message.text)
 
 
