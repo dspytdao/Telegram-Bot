@@ -59,7 +59,8 @@ def echo(update, context):
     print(data)
     if data[-1]['signal_type'] == 'long':
             context.bot.sendAnimation(chat_id=update.message.chat_id,
-            animation="http://techslides.com/demos/sample-videos/small.mp4", ## that's just data from local gif file
+            #animation="http://techslides.com/demos/sample-videos/small.mp4",
+            animation = "https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ## that's just data from local gif file
             caption='That is your gif!',
             )
     update.message.reply_text(f'{data[-1]}')
