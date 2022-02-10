@@ -2,7 +2,7 @@ import logging
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-from app.utils import FirstTry
+#from app.utils import FirstTry
 
 from py3cw.request import Py3CW
 
