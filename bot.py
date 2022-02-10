@@ -50,17 +50,18 @@ def echo(update, context):
     #https://core.telegram.org/bots/api#sendanimation
     #https://stackoverflow.com/questions/35294948/telegram-python-chatbot-replying-with-an-animated-gif
     """Echo the user message."""
-    context.bot.sendAnimation(chat_id=update.message.chat_id,
-            animation="http://techslides.com/demos/sample-videos/small.mp4", ## that's just data from local gif file
-            caption='That is your gif!',
-            )
 
     error, data = p3cw.request(
     entity='marketplace', 
     action='signals',
     action_id = '184'
     )
-    update.message.reply_text(f'{data[0]}')
+    if data[-1]['signal'] == 'long':
+            context.bot.sendAnimation(chat_id=update.message.chat_id,
+            animation="https://media3.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.gif", ## that's just data from local gif file
+            caption='That is your gif!',
+            )
+    update.message.reply_text(f'{data[-1]}')
     update.message.reply_text(update.message.text)
 
 
