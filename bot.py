@@ -68,7 +68,7 @@ def echo(update, context):
     if data[0]['signal_type'] == 'long':
         context.bot.sendAnimation(
             chat_id=update.message.chat_id,
-            animation = long_array[random.randrange(1)],
+            animation = long_array[random.randrange(2)-1],
             caption='Long Signal!',
         )
     else:
