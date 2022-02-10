@@ -2,7 +2,16 @@ import logging
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+# Enable logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+
+PORT = int(os.environ.get('PORT', '8443'))
+
 #from app.utils import FirstTry
+#datastorage = FirstTry()
 
 from py3cw.request import Py3CW
 
@@ -17,22 +26,18 @@ p3cw = Py3CW(
     }
 )
 
+long_array = ['https://c.tenor.com/SY_Rb9FZFb4AAAAS/cat-jam-stonks.gif', ]
 
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+short_array = ["https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ]
 
-logger = logging.getLogger(__name__)
-
-PORT = int(os.environ.get('PORT', '8443'))
-
-#datastorage = FirstTry()
-
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
+# Command Handlers
 def start(update, context):
     # how do we pass class instance here
-
+    context.bot.sendAnimation(chat_id=update.message.chat_id,
+                animation = 'https://c.tenor.com/8IIQDBECgssAAAAM/hello-sexy-hi.gif',
+                ## that's just data from local gif file
+                caption='Long Signal!',
+                )
     #datastorage.add_counter()
 
     """Send a message when the command /start is issued."""
@@ -57,13 +62,19 @@ def echo(update, context):
     action_id = '184'
     )
     print(data)
-    if data[-1]['signal_type'] == 'long':
+    if data[0]['signal_type'] == 'long':
             context.bot.sendAnimation(chat_id=update.message.chat_id,
-            #animation="http://techslides.com/demos/sample-videos/small.mp4",
-            animation = "https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ## that's just data from local gif file
-            caption='That is your gif!',
+            animation = long_array[0],
+             ## that's just data from local gif file
+            caption='Long Signal!',
             )
-    update.message.reply_text(f'{data[-1]}')
+    else:
+            context.bot.sendAnimation(chat_id=update.message.chat_id,
+            animation = short_array[0],
+             ## that's just data from local gif file
+            caption='Short Signal!',
+            )
+    update.message.reply_text(f' Pair: {data[0]['pair']} on Exchange:{data[0]['exchange']} ')
     update.message.reply_text(update.message.text)
 
 
