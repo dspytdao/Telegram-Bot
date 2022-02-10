@@ -11,7 +11,7 @@ p3cw = Py3CW(
     secret=os.environ.get("SECRET"),
     request_options={
         'request_timeout': 10,
-        'nr_of_retries': 1,
+        'nr_of_retries': 5,
         'retry_status_codes': [502],
         'retry_backoff_factor': 0.1
     }
