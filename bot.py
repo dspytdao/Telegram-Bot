@@ -74,7 +74,8 @@ def echo(update, context):
              ## that's just data from local gif file
             caption='Short Signal!',
             )
-    update.message.reply_text(f' Pair: {data[0]['pair']} on Exchange:{data[0]['exchange']} ')
+    pair = data[0]['pair']
+    update.message.reply_text(f' Pair: {pair}')
     update.message.reply_text(update.message.text)
 
 
