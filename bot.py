@@ -1,3 +1,4 @@
+import datetime
 import logging
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
@@ -75,7 +76,14 @@ def echo(update, context):
             caption='Short Signal!',
             )
     pair = data[0]['pair']
-    update.message.reply_text(f' Pair: {pair}')
+    exchange = data[0]['exchange']
+    id = data[0]['id']
+    time = datetime.datetime.fromtimestamp(
+        int(data[0]['timestamp'])
+    ).strftime('%Y-%m-%d %H:%M:%S')
+    min = data[0]['min']
+    max = data[0]['max']
+    update.message.reply_text(f' Pair: {pair}, Exchange: {exchange}, Id: {id}, Time: {time}, Min: {min}, Max: {max}')
     update.message.reply_text(update.message.text)
 
 
