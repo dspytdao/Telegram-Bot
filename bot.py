@@ -27,18 +27,17 @@ p3cw = Py3CW(
     }
 )
 
-long_array = ['https://c.tenor.com/SY_Rb9FZFb4AAAAS/cat-jam-stonks.gif', ]
+long_array = ['https://c.tenor.com/SY_Rb9FZFb4AAAAS/cat-jam-stonks.gif', "https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ]
 
-short_array = ["https://i.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.webp", ]
+short_array = ["https://c.tenor.com/lhey0DPlkiQAAAAM/rage-red-stocks.gif" ]
 
 # Command Handlers
 def start(update, context):
     # how do we pass class instance here
     context.bot.sendAnimation(chat_id=update.message.chat_id,
-                animation = 'https://c.tenor.com/8IIQDBECgssAAAAM/hello-sexy-hi.gif',
-                ## that's just data from local gif file
-                caption='Long Signal!',
-                )
+        animation = 'https://c.tenor.com/8IIQDBECgssAAAAM/hello-sexy-hi.gif',
+        caption='Long Signal!',
+        )
     #datastorage.add_counter()
 
     """Send a message when the command /start is issued."""
@@ -62,19 +61,21 @@ def echo(update, context):
         action='signals',
         action_id = update.message.text
     )
+    if len(error):
+        update.message.reply_text(f' Enter Correct ID')
     #print(data)
     if data[0]['signal_type'] == 'long':
-            context.bot.sendAnimation(
-                chat_id=update.message.chat_id,
-                animation = long_array[0],
-                caption='Long Signal!',
-            )
+        context.bot.sendAnimation(
+            chat_id=update.message.chat_id,
+            animation = long_array[0],
+            caption='Long Signal!',
+        )
     else:
-            context.bot.sendAnimation(
-                chat_id=update.message.chat_id,
-                animation = short_array[0],
-                caption='Short Signal!',
-            )
+        context.bot.sendAnimation(
+            chat_id=update.message.chat_id,
+            animation = short_array[0],
+            caption='Short Signal!',
+        )
     pair = data[0]['pair']
     exchange = data[0]['exchange']
     id = data[0]['id']
@@ -84,7 +85,6 @@ def echo(update, context):
     min = data[0]['min']
     max = data[0]['max']
     update.message.reply_text(f' Pair: {pair}, Exchange: {exchange}, Id: {id}, Time: {time}, Min: {min}, Max: {max}')
-    update.message.reply_text(update.message.text)
 
 
 def error(update, context):
