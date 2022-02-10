@@ -60,7 +60,7 @@ def echo(update, context):
     action='signals',
     action_id = '184'
     )
-    update.message.reply_text(f'{data}')
+    update.message.reply_text(f'{data[0]}')
     update.message.reply_text(update.message.text)
 
 
