@@ -1,6 +1,7 @@
 # 3Commas Alert Telegram Bot
 
-![](.\\assets\\3commas.gif)
+![](https://github.com/NFT-Link/Telegram-Bot/blob/main/assets/3commas.gif)
+
 The bot is available at @Nifty_Inks_bot on Telegram.
 
 The bot is powered by **[3Commas API](https://github.com/3commas-io/3commas-official-api-docs)**.
