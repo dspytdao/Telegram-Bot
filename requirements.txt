@@ -13,5 +13,5 @@ requests==2.28.1
 six==1.16.0
 tornado==6.4
 tzdata==2022.7
-tzlocal==4.2
+tzlocal==5.2
 urllib3==1.26.12
